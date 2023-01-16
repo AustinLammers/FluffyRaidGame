@@ -51,7 +51,9 @@ public class PlayerMovement : MonoBehaviour
     {
         xMovement = Input.GetAxis("Horizontal");
         zMovement = Input.GetAxis("Vertical");
-        rb.velocity = transform.TransformDirection(new Vector3(xMovement, rb.velocity.y, zMovement) * movementSpeed);
+        rb.velocity = (transform.forward * zMovement + transform.right * xMovement) * movementSpeed;
+            
+            //transform.TransformDirection(new Vector3(xMovement, rb.velocity.y, zMovement) * movementSpeed);
         //rb.velocity = (new Vector3(xMovement, rb.velocity.y, zMovement) * movementSpeed);
     }
 
